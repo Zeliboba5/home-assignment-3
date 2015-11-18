@@ -1,37 +1,37 @@
 from decimal import Decimal
 
 
-def add(*args):
-    return Decimal(args[0]) + Decimal(args[1])
+def add(x, y):
+    return str(Decimal(x) + Decimal(y))
 
 
-def sub(*args):
-    return Decimal(args[0]) - Decimal(args[1])
+def sub(x, y):
+    return str(Decimal(x) - Decimal(y))
 
 
-def mul(*args):
-    return Decimal(args[0]) * Decimal(args[1])
+def mul(x, y):
+    return str(Decimal(x) * Decimal(y))
 
 
-def div(*args):
-    if args[1] == 0:
-        raise ValueError("Division by zero")
-
-    return Decimal(args[0]) / Decimal(args[1])
+def div(x, y):
+    return str(Decimal(x) / Decimal(y))
 
 
-def fact(*args):
-    if not isinstance(args[0], int):
-        if not args[0].is_integer():
-            raise ValueError("Not whole number in factorial")
+def fact(x):
+    if not x.isdigit():
+        raise ValueError("Not whole number in factorial")
 
-    if args[0] < 0:
+    return str(fact_evaluator(Decimal(x)))
+
+
+def fact_evaluator(x):
+    if x < 0:
         raise ValueError("Negative number in factorial")
 
-    if args[0] == 0 or args[0] == 1:
+    if x == 0 or x == 1:
         return 1
 
-    return args[0] * fact(args[0] - 1)
+    return x * fact_evaluator(x - 1)
 
 
 operation_list = {

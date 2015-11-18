@@ -6,8 +6,8 @@ def calculate(operation, *args):
         raise ValueError("Wrong operation")
 
     for arg in args:
-        if arg is None:
-            raise ValueError("None is passed as argument")
+        if not isinstance(arg, basestring):
+            raise ValueError("Pass string as argument please")
 
     func = operation_list[operation]
 
