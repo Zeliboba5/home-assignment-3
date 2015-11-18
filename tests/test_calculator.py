@@ -9,8 +9,16 @@ class CalculatorTestCase(unittest.TestCase):
     def testCalculator(self):
         self.assertEquals(calculate("+", 1, 3), Decimal("4"))
 
-    def testDecimial(self):
+    def testDecimal(self):
         self.assertAlmostEquals(calculate("-", 2.1, 1.3), Decimal("0.8"))
+
+    def testNoneAsArg(self):
+        with self.assertRaises(ValueError):
+            calculate("+", None, 1)
+        with self.assertRaises(ValueError):
+            calculate("*", None, 4)
+        with self.assertRaises(ValueError):
+            calculate("/", 1, None)
 
     def testArgumentNumberError(self):
         with self.assertRaises(IndexError):
